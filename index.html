@@ -1,171 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Complete Login System - Aniket</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Tribute Page - APJ Abdul Kalam</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial;
-    background:linear-gradient(135deg,#141e30,#243b55);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    color:white;
-}
-.container{
-    background:white;
-    color:black;
-    padding:30px;
-    width:320px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-h2{text-align:center;}
-input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-}
-button{
-    width:100%;
-    padding:10px;
-    background:#243b55;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-}
-button:hover{background:#141e30;}
-.link{text-align:center;margin-top:10px;}
-.error{color:red;font-size:14px;text-align:center;}
-.dashboard{text-align:center;}
-.logout-btn{
-    background:#e74c3c;
-    margin-top:15px;
-}
-.toggle-btn{
-    background:#27ae60;
-    margin-top:5px;
-}
-</style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #555;
+            font-weight: normal;
+            margin-top: 0;
+        }
+
+        .image-box {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .image-box img {
+            width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        .quote {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #eaf2f8;
+            border-left: 5px solid #3498db;
+            font-style: italic;
+            font-size: 17px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Dr. A. P. J. Abdul Kalam</h1>
+        <h3>The Missile Man of India</h3>
 
-<div class="container" id="authBox">
-
-    <!-- LOGIN FORM -->
-    <div id="loginForm">
-        <h2>Login</h2>
-        <input type="email" id="loginEmail" placeholder="Email">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p class="error" id="loginError"></p>
-        <div class="link">
-            Don't have account? 
-            <a href="#" onclick="showRegister()">Register</a>
+        <div class="image-box">
+            <!-- Local Image -->
+            <img src="apj.jpg" alt="APJ Abdul Kalam">
         </div>
-    </div>
 
-    <!-- REGISTER FORM -->
-    <div id="registerForm" style="display:none;">
-        <h2>Register</h2>
-        <input type="text" id="regName" placeholder="Full Name">
-        <input type="email" id="regEmail" placeholder="Email">
-        <input type="password" id="regPassword" placeholder="Password (min 6 chars)">
-        <button onclick="register()">Register</button>
-        <p class="error" id="regError"></p>
-        <div class="link">
-            Already have account? 
-            <a href="#" onclick="showLogin()">Login</a>
+        <p>
+            Dr. A. P. J. Abdul Kalam was one of India’s most respected scientists and the 11th President of India.
+            He played a vital role in India’s space and missile development programs and inspired millions of
+            students with his vision, simplicity, and dedication to the nation.
+        </p>
+
+        <p>
+            What I admire most about Dr. Kalam is his humility and love for learning. Despite achieving great
+            success, he always remained grounded and believed that education and hard work are the keys to
+            national development.
+        </p>
+
+        <div class="quote">
+            "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action."
         </div>
+
+        <p>
+            Dr. Kalam’s life teaches us that no dream is too big and no background is too small to achieve
+            greatness. He continues to live on in the hearts of people as a true role model.
+        </p>
+
+        <footer>
+            Tribute Page by ANIKET ROUNDHAL | HTML & CSS Project
+        </footer>
     </div>
-
-    <!-- DASHBOARD -->
-    <div id="dashboard" style="display:none;" class="dashboard">
-        <h2>Welcome 🎉</h2>
-        <h3 id="welcomeUser"></h3>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-
-</div>
-
-<script>
-
-function showRegister(){
-    document.getElementById("loginForm").style.display="none";
-    document.getElementById("registerForm").style.display="block";
-}
-
-function showLogin(){
-    document.getElementById("registerForm").style.display="none";
-    document.getElementById("loginForm").style.display="block";
-}
-
-function register(){
-    var name=document.getElementById("regName").value;
-    var email=document.getElementById("regEmail").value;
-    var password=document.getElementById("regPassword").value;
-
-    if(password.length<6){
-        document.getElementById("regError").innerText="Password must be at least 6 characters!";
-        return;
-    }
-
-    if(localStorage.getItem(email)){
-        document.getElementById("regError").innerText="User already exists!";
-        return;
-    }
-
-    var user={name:name,email:email,password:password};
-    localStorage.setItem(email,JSON.stringify(user));
-
-    alert("Registration Successful!");
-    showLogin();
-}
-
-function login(){
-    var email=document.getElementById("loginEmail").value;
-    var password=document.getElementById("loginPassword").value;
-
-    var user=JSON.parse(localStorage.getItem(email));
-
-    if(user && user.password===password){
-        localStorage.setItem("loggedUser",email);
-        showDashboard();
-    }else{
-        document.getElementById("loginError").innerText="Invalid Email or Password!";
-    }
-}
-
-function showDashboard(){
-    var email=localStorage.getItem("loggedUser");
-    if(!email) return;
-
-    var user=JSON.parse(localStorage.getItem(email));
-
-    document.getElementById("loginForm").style.display="none";
-    document.getElementById("registerForm").style.display="none";
-    document.getElementById("dashboard").style.display="block";
-
-    document.getElementById("welcomeUser").innerText="Hello, "+user.name;
-}
-
-function logout(){
-    localStorage.removeItem("loggedUser");
-    location.reload();
-}
-
-if(localStorage.getItem("loggedUser")){
-    showDashboard();
-}
-
-</script>
-
 </body>
 </html>
